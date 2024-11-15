@@ -15,8 +15,8 @@ A fast and efficient option pricing tool built with Next.js frontend and Python 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/adamDucken/bsop.git
-   cd bsop
+   git clone https://github.com/adamDucken/bsop_next_fast.git
+   cd bsop_next_fast
    ```
 
 2. Run the setup script:
