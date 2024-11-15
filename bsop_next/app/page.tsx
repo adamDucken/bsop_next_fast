@@ -11,7 +11,7 @@ export default function Home() {
       <ModeToggle />
     </div>
       <div>
-        {/* <BSOP/> */}
+        <BSOP/>
         <Hello/>
       </div>    
     </div>

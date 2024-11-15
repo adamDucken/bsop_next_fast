@@ -11,7 +11,7 @@ export default function Hello() {
         const fetchMessage = async () => {
             try {
                 // Using the FastAPI container's IP address
-                const response = await fetch('http://172.21.0.2:8000/api/hello');
+                const response = await fetch('http://172.28.0.2:8000/api/hello');
                 const data = await response.json();
                 setMessage(data.message);
             } catch (err) {

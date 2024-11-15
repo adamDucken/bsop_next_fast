@@ -84,3 +84,4 @@ bsop_fast/.Python
 bsop_fast/.env
 bsop_fast/venv
 bsop_fast/.venv
+.config
