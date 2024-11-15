@@ -2,6 +2,7 @@
 
 import BSOP from "@/components/bsop";
 import { ModeToggle } from "@/components/mode-toggle";
+import Hello from "@/components/hello";
 
 export default function Home() {
   return (
@@ -10,7 +11,8 @@ export default function Home() {
       <ModeToggle />
     </div>
       <div>
-        <BSOP/>
+        {/* <BSOP/> */}
+        <Hello/>
       </div>    
     </div>
   );

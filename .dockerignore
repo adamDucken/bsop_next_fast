@@ -1,0 +1,20 @@
+# Next.js
+bsop_next/node_modules
+bsop_next/.next
+bsop_next/out
+bsop_next/.git
+bsop_next/.env.local
+bsop_next/.env.development.local
+bsop_next/.env.test.local
+bsop_next/.env.production.local
+bsop_next/.pnpm-store
+
+# FastAPI
+bsop_fast/__pycache__
+bsop_fast/*.pyc
+bsop_fast/*.pyo
+bsop_fast/*.pyd
+bsop_fast/.Python
+bsop_fast/.env
+bsop_fast/venv
+bsop_fast/.venv

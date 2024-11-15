@@ -1,0 +1,86 @@
+# Dependencies
+node_modules
+.pnpm-store
+.npm
+.yarn
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Next.js
+.next/
+out/
+build
+dist/
+.vercel
+.env*.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.env
+venv/
+.venv/
+ENV/
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Docker
+.docker/
+docker-compose.override.yml
+
+# some things i added 
+bsop_next/.pnpm-store
+bsop_next/node_modules
+bsop_next/.next
+bsop_next/out
+bsop_next/.git
+bsop_next/.env.local
+bsop_next/.env.development.local
+bsop_next/.env.test.local
+bsop_next/.env.production.local
+bsop_fast/__pycache__
+bsop_fast/*.pyc
+bsop_fast/*.pyo
+bsop_fast/*.pyd
+bsop_fast/.Python
+bsop_fast/.env
+bsop_fast/venv
+bsop_fast/.venv
