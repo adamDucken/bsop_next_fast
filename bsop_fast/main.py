@@ -41,7 +41,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://172.18.0.3:3000",  # Frontend container
+        "http://172.19.0.3:3000",  # Frontend container
         "http://localhost:3000",    # Local development
     ],
     allow_credentials=True,
@@ -117,8 +117,3 @@ async def calculate_option_price(option: BSOption) -> BSResponse:
         raise he
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Server error: {str(e)}")
-
-@app.get("/api/health")
-async def health_check():
-    """Health check endpoint"""
-    return {"status": "healthy"}

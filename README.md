@@ -28,9 +28,8 @@ A fast and efficient option pricing tool built with Next.js frontend and Python 
 3. Access the application:
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:8000
-   
-   If you fail to access the app in these places,
-   follow the instructions of the setup script.
+
+   If you fail to access the app in these places, follow the instructions of the setup script.
 
 ## Usage
 

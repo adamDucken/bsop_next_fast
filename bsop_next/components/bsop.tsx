@@ -5,66 +5,21 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-// import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { bsOptionSchema } from '@/validation/bsop_scheme';
+import {BSOptionInput, BSResponse} from '@/types/types';
 
-// Zod schema matching the Pydantic BSOption model
-const bsOptionSchema = z.object({
-  r: z.number()
-    .min(0, "Interest rate must be positive")
-    .max(1, "Interest rate must be less than 1"),
-  S: z.number()
-    .positive("Stock price must be positive"),
-  K: z.number()
-    .positive("Strike price must be positive"),
-  T: z.number()
-    .positive("Time must be positive")
-    .max(30, "Time must be less than 30 years"),
-  sigma: z.number()
-    .positive("Volatility must be positive")
-    .max(5, "Volatility seems unreasonably high"),
-  type: z.enum(["c", "p"])
-});
-
-// Infer TypeScript type from Zod schema
-type BSOptionInput = z.infer<typeof bsOptionSchema>;
-
-// Response type matching your FastAPI response
-interface BSResponse {
-  option_price: number;
-  details: {
-    delta: number;
-    gamma: number;
-    theta: number;
-    vega: number;
-    d1: number;
-    d2: number;
-  };
-}
-
-const API_URL =  'http://172.20.0.2:8000';
+const API_URL =  'http://172.19.0.2:8000';
 
 export default function BSOP() {
   const [result, setResult] = useState<BSResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset
+  const { register, handleSubmit, formState: { errors }, reset
   } = useForm<BSOptionInput>({
-    resolver: zodResolver(bsOptionSchema),
-    defaultValues: {
-      type: "c",
-      r: 0.05,
-      S: 100,
-      K: 100,
-      T: 1,
-      sigma: 0.2
-    }
+    resolver: zodResolver(bsOptionSchema)
   });
 
   const fields = [
@@ -148,11 +103,11 @@ export default function BSOP() {
             <Button type="submit" className="w-full">Calculate</Button>
           </form>
 
-          {/* {error && (
+          {error && (
             <Alert variant="destructive" className="mt-4">
               <AlertDescription>{error}</AlertDescription>
             </Alert>
-          )} */}
+          )}
 
           {result && (
             <div className="mt-4 space-y-4">
