@@ -11,7 +11,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { bsOptionSchema } from '@/validation/bsop_scheme';
 import {BSOptionInput, BSResponse} from '@/types/types';
 
-const API_URL =  'http://172.19.0.2:8000';
+const API_URL =  'http://172.18.0.2:8000';
 
 export default function BSOP() {
   const [result, setResult] = useState<BSResponse | null>(null);

@@ -1,36 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel, Field, validator
-from typing import Literal
 import numpy as np
 from scipy.stats import norm
-from typing_extensions import Annotated
-
-class BSOption(BaseModel):
-    """Pydantic model for Black-Scholes option parameters"""
-    r: Annotated[float, Field(description="Risk-free interest rate", ge=0, le=1)]
-    S: Annotated[float, Field(description="Current stock price", gt=0)]
-    K: Annotated[float, Field(description="Strike price", gt=0)]
-    T: Annotated[float, Field(description="Time to maturity in years", gt=0)]
-    sigma: Annotated[float, Field(description="Volatility", gt=0)]
-    type: Literal["c", "p"] = Field(description="Option type: 'c' for Call, 'p' for Put")
-
-    @validator('T')
-    def validate_time(cls, v):
-        if v > 30:  # Assuming max 30 years
-            raise ValueError("Time to maturity must be less than 30 years")
-        return v
-    
-    @validator('sigma')
-    def validate_sigma(cls, v):
-        if v > 5:  # 500% volatility as upper limit
-            raise ValueError("Volatility seems unreasonably high")
-        return v
-
-class BSResponse(BaseModel):
-    """Pydantic model for the API response"""
-    option_price: float
-    details: dict
+from models import BSOption, BSResponse
 
 app = FastAPI(
     title="Black-Scholes Option Pricing API",
@@ -41,7 +13,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://172.19.0.3:3000",  # Frontend container
+        "http://172.18.0.3:3000",  # Frontend container
         "http://localhost:3000",    # Local development
     ],
     allow_credentials=True,
