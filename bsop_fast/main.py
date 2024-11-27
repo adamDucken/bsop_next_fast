@@ -20,14 +20,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.post("/api/bsop", response_model=BSResponse)
 async def calculate_option_price(option: BSOption) -> BSResponse:
     """
     Calculate option price using Black-Scholes model
-    
+
     Args:
         option (BSOption): Option parameters
-        
+
     Returns:
         BSResponse: Option price and additional calculations
     """
@@ -40,9 +41,9 @@ async def calculate_option_price(option: BSOption) -> BSResponse:
             sigma=option.sigma,
             type=option.type
         )
-        
+
         return BSResponse(option_price=price, details=details)
-        
+
     except HTTPException as he:
         raise he
     except Exception as e:
